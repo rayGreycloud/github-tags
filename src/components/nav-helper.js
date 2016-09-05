@@ -1,3 +1,4 @@
+import app from 'ambersand-app'
 import React from 'react'
 import localLinks from 'local-links'
 
