@@ -1,3 +1,4 @@
+import app from 'ampersand-app'
 import React from 'react'
 import Router from 'ampersand-router'
 import qs from 'qs'
@@ -21,6 +22,7 @@ export default Router.extend({
     '': 'public',
     'repos': 'repos',
     'login': 'login',
+    'logout': 'logout',
     'auth/callback?:query': 'authCallback'
   },
 
@@ -43,12 +45,19 @@ export default Router.extend({
   authCallback (query) {
     query = qs.parse(query)
     console.log(query)
-
+    // request to microservice to protect secret
     xhr({
       url: 'http://labelr-dev.herokuapp.com/authenticate/' + query.code,
       json: true
     }, (err, req, body) => {
       console.log(body)
+      app.me.token = body.token
+      this.redirectTo('/repos')
     })
+  },
+
+  logout () {
+    window.localStorage.clear()
+    window.location = '/'
   }
 })
