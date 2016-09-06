@@ -19,7 +19,8 @@ export default Router.extend({
   routes: {
     '': 'public',
     'repos': 'repos',
-    'login': 'login'
+    'login': 'login',
+    'auth/callback?:query': 'authCallback'
   },
 
   public () {
@@ -36,5 +37,10 @@ export default Router.extend({
       redirect_uri: window.location.origin + '/auth/callback',
       client_id: 'f8dd69187841cdd22a26'
     })
+  },
+
+  authCallback (query) {
+    query = qs.parse(query)
+    console.log(query)
   }
 })
