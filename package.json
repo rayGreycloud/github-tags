@@ -20,7 +20,7 @@
     "local-links": "^1.4.0",
     "lodash.assign": "^3.2.0",
     "lodash.has": "^3.2.1",
-    "lodash.merge": "^3.3.1",
+    "lodash.merge": "^4.6.2",
     "lodash.pick": "^3.1.0",
     "lodash.result": "^3.1.2",
     "milliseconds": "^1.0.3",
